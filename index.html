@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy 5th Anniversary</title>
+    <link
+        rel="stylesheet"
+        href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+        crossorigin=""
+    >
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Convert youtube to mp3 here: https://y2mate.gs/-->
+    <audio id="love-song" preload="auto"></audio>
+
+    <div class="music-controls">
+        <button id="music-toggle" class="music-toggle" type="button" aria-label="Play anniversary music">
+            <span class="music-icon">♫</span>
+            <span class="music-label">Play music</span>
+        </button>
+        <button id="music-next" class="music-next" type="button" aria-label="Skip to next song">
+            <span aria-hidden="true">&gt;</span>
+        </button>
+    </div>
+
+    <header>
+        <h1>Our 5 year Anniversary Story</h1>
+        <p>A little collection of my favorite memories with you.</p>
+    </header>
+
+    <main>
+        <img
+            src="images/us.png"
+            alt="A favorite picture of us"
+            class="couple-photo"
+        >
+
+        <section class="story-section anniversary-section">
+            <h2>Since our story began...</h2>
+
+            <div class="counter">
+                <div class="time-unit">
+                    <span id="years">0</span>
+                    <span class="label">Years</span>
+                </div>
+
+                <div class="time-unit">
+                    <span id="months">0</span>
+                    <span class="label">Months</span>
+                </div>
+
+                <div class="time-unit">
+                    <span id="days">0</span>
+                    <span class="label">Days</span>
+                </div>
+
+                <div class="time-unit">
+                    <span id="hours">0</span>
+                    <span class="label">Hours</span>
+                </div>
+
+                <div class="time-unit">
+                    <span id="minutes">0</span>
+                    <span class="label">Minutes</span>
+                </div>
+
+                <div class="time-unit">
+                    <span id="seconds">0</span>
+                    <span class="label">Seconds</span>
+                </div>
+            </div>
+        </section>
+
+        <img
+            src="images/office.png"
+            alt="At the Office"
+            class="couple-photo"
+        >
+
+        <section class="story-section">
+            <h2>How It All Started!</h2>
+            <p>
+            I can still remember back in August 2021, finding excuses to stay late at the office in La Tourette on the days when the high-spirited, hard-working,
+            cute Indian girl in the office next to mine would be there. Our desks just happened to be angled perfectly for us to make eye contact and 
+            strike up conversations. We would spend hours having deep conversations, laughing about chemistry homework, taste-testing cookies, and leaving each other
+            little notes and pickup lines. I guess all those excuses to stay late at school ended up being pretty worthwhile! (:
+            </p>
+        </section>
+
+        <img
+            src="images/florida.png"
+            alt="Us in Forida"
+            class="couple-photo"
+        >
+
+        <section class="story-section">
+            <h2>Our First Adventure Together!</h2>
+            <p>Our time in Florida was one of my favorite memories of us. Although we had were already dealing with everything going on with your parents at the
+                time, it was before the stress of medical school applications and all the uncertainty that came with it. It was just you and me, driving around
+                the Sunshine State in a convertible without a care in the world. We spent our days playing frisbee in the ocean, spotting dolphins on the jet ski,
+                eating pizza slices bigger than our heads, and finding enormous alligators on our hikes. Somewhere during that trip, I realized just how much I 
+                loved you and that I would be happy spending all my days with you. Seeing you so genuinely happy, laughing and smiling without a care in the world,
+                made me the happiest man alive.
+            </p>
+        </section>
+
+        <img
+            src="images/noodle.png"
+            alt="Noodle"
+            class="couple-photo"
+        >
+
+        <section class="story-section">
+            <h2>And then there were three...</h2>
+            <p>Late March 2023, we welcomed Noodle into our lives. You seemed a little hesitant about the idea at first, but it turns out his cuddly, chill, yet
+                zoomy personality was a perfect fit for us. We have experienced just about every emotion with him: scared when we thought we lost him in Rochelle,
+                angry when he started munching on your plants, worried when he threw up in my car, and in awe when he snuggles in our laps or eats dinner with us.
+                I would say we picked a good one(: 
+            </p>
+        </section>
+
+        <img
+            src="images/little.png"
+            alt="Little Things"
+            class="couple-photo"
+        >
+
+        <section class="story-section">
+            <h2>The Little Things</h2>
+            <p>Throughout our five years together, we haven't always had the money for expensive vacations, but we have always managed to make the most of the little 
+                things. Late-night walks, our "book clubs," brewery and winery dates, hiking local trails, trying new Hello Fresh recipes together, watching movies 
+                on the couch, or traveling around the Midwest for a race. I genuinely love all of it. Once school is over and we're in a better place financially, 
+                we will have more opportunities to explore the world and experience different cultures together. But for now, I am more than happy focusing on these
+                little things with you!
+            </p>
+        </section>
+
+        <section class="story-section">
+            <h2>Places We've Been</h2>
+            <p>Click a marker to see a memory from that place.</p>
+            <div
+                id="travel-map"
+                class="travel-map"
+                role="region"
+                aria-label="Map of places we have visited"
+            ></div>
+        </section>
+
+        <section class="story-section letter-section">
+            <h2>A letter for you</h2>
+
+            <button
+                id="letter-toggle"
+                class="letter-button"
+                type="button"
+                aria-expanded="false"
+                aria-controls="love-letter"
+            >
+                <span class="envelope" aria-hidden="true">
+                    <span class="envelope-flap"></span>
+                    <span class="envelope-heart">♥</span>
+                </span>
+                <span class="letter-button-label">Open your letter</span>
+            </button>
+
+            <article id="love-letter" class="love-letter" hidden>
+                <h3>Devanshi,</h3>
+                <p>
+                Happy fifth anniversary! I can't believe how quickly time has flown by. We have been through so much together, and yet here we are, still going strong.
+                As I have tried to show throughout this webpage, I honestly just love spending time with you. By now, you have probably realized that I am far from perfect: 
+                I don't talk very much on car rides, I throw your clean clothes in the hamper, I don't completely dry my back after showers, I don't use sunscreen, and 
+                I "rage bait" because apparently that's my love language (just to name a few). But I would like to think there are plenty of good qualities that make up for those things!
+                I have loved watching you grow and pursue your interests over the years. Whether it is running a half marathon, growing a forest in your studio apartment, reading books 
+                twice as fast as I do, spending time with the girls, or going on hikes and walks through Forest Park, I love seeing you find happiness in the things you enjoy. Beyond that, 
+                I have watched you grow into such a strong, independent woman. You are not afraid to speak your mind or stand up for what you believe in. You continue to take on medical 
+                school one day at a time, all while dealing with the stress of everything going on with your parents. I am genuinely proud of you and your ability to keep pushing forward 
+                and give everything your best. <br><br>
+
+                We often joke about how our interests don't always align, but honestly, that is something I have always wanted. I wanted to be with someone from a different culture, 
+                someone who would introduce me to new perspectives and experiences and challenge me to appreciate (or at least tolerate) our differences. And even when those differences 
+                turn into the occasional verbal disagreement, I am glad we can always support each other and be ourselves. <br><br>
+
+                So, raise your glass. Cheers to another 5! <br><br>
+                </p>
+                <p>I love you,</p>
+                <p>Tim</p>
+            </article>
+        </section>
+
+        <section class="story-section quiz-section" aria-labelledby="quiz-title">
+            <p class="quiz-intro">Oh, one more thing...</p>
+            <h2 id="quiz-title">Time for a pop quiz!</h2>
+
+            <form id="memory-quiz">
+                <fieldset class="quiz-question">
+                    <legend>1. What was the date that I asked you out?</legend>
+                    <label><input type="radio" name="q1" value="11/16"> November 16, 2021</label>
+                    <label><input type="radio" name="q1" value="11/17" required> November 17, 2021</label>
+                    <label><input type="radio" name="q1" value="11/18"> November 18, 2021</label>
+                </fieldset>
+
+                <fieldset class="quiz-question">
+                    <legend>2. What animal at Lincoln Park Zoo made us laugh hysterically because of how ugly it was?</legend>                
+                    <label><input type="radio" name="q2" value="alpaca"> Alpaca</label>
+                    <label><input type="radio" name="q2" value="peccary"> Chacoan Peccary</label>
+                    <label><input type="radio" name="q2" value="takin" required> Sichuan Takin</label>
+                </fieldset>
+
+                <fieldset class="quiz-question">
+                    <legend>3. Where did I first have you try chicken?</legend>
+                    <label><input type="radio" name="q3" value="home"> Prepared by me</label>
+                    <label><input type="radio" name="q3" value="chipotle"> Chipotle</label>
+                    <label><input type="radio" name="q3" value="bdubs" required> Buffalo Wild Wings</label>
+                </fieldset>
+
+                <fieldset class="quiz-question">
+                    <legend>4. Which of these was NOT a place where Noodle used to hide when we first brought him to Rochelle?</legend>
+                    <label><input type="radio" name="q4" value="bathtub" required> In the bathtub</label>
+                    <label><input type="radio" name="q4" value="dresser"> In my dresser</label>
+                    <label><input type="radio" name="q4" value="litter box"> In his litter box </label>
+                </fieldset>
+
+                <fieldset class="quiz-question">
+                    <legend>5. In Florida, I took a picture of you next to a mailbox shaped like which animal? </legend>
+                    <label><input type="radio" name="q5" value="sea lion"> Sea lion</label>
+                    <label><input type="radio" name="q5" value="walrus" required> Walrus</label>
+                    <label><input type="radio" name="q5" value="dolphin"> Dolphin</label>
+                </fieldset>
+
+                <button class="quiz-submit" type="submit">See how you did</button>
+                <p id="quiz-result" class="quiz-result" aria-live="polite" hidden></p>
+            </form>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>Made with love.</p>
+    </footer>
+
+    <script
+        src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+        crossorigin=""
+    ></script>
+    <script src="script.js"></script>
+</body>
+</html>
