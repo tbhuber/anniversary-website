@@ -6,9 +6,10 @@ const loveSong = document.getElementById("love-song");
 
 if (musicToggle && loveSong) {
     const playlist = [
-        { title: "World Away", src: "audio/world-away.mp3" },
+        {title: "Zaalima", src: "audio/lost-frequencies.mp3" },
+        {title: "World Away", src: "audio/world-away.mp3" },
         {title: "I Need Your Love", src: "audio/need-your-love.mp3" },
-        {title: "Love Dose", src: "audio/yoyohoney.mp3" },
+        {title: "Zaalima", src: "audio/zaalima.mp3" },
         {title: "Follow You", src: "audio/dragons.mp3" },
         {title: "Need Your Love", src: "audio/gryffin.mp3" },
         {title: "In My Arms", src: "audio/illenium.mp3" }
